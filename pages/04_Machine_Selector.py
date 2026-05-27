@@ -88,7 +88,7 @@ def colour_fit(val):
 
 st.dataframe(
     eu_df.style
-        .applymap(colour_fit, subset=["ARPOL Fit"])
+        .map(colour_fit, subset=["ARPOL Fit"])
         .format({col: "€{:,.0f}" for col in eu_df.columns if "(€)" in col}),
     use_container_width=True,
     hide_index=True,
@@ -151,7 +151,7 @@ china_df = pd.DataFrame(china_rows)
 
 st.dataframe(
     china_df.style
-        .applymap(colour_fit, subset=["ARPOL Fit"])
+        .map(colour_fit, subset=["ARPOL Fit"])
         .format({col: "€{:,.0f}" for col in china_df.columns if "(€)" in col}),
     use_container_width=True,
     hide_index=True,

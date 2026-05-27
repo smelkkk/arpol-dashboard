@@ -149,7 +149,7 @@ for cat in categories:
     with st.expander(f"**{cat}**", expanded=(cat in ["Current State", "Working Capital"])):
         cat_df = df[df["Category"] == cat].drop(columns=["Category", "Is Placeholder"])
 
-        styled = cat_df.style.applymap(
+        styled = cat_df.style.map(
             lambda v: status_color(v),
             subset=["Status"],
         )
