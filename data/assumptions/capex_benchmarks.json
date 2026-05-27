@@ -1,0 +1,191 @@
+{
+  "metadata": {
+    "source": "Vendor published pricing + ESADE research, May 2026",
+    "ecb_rate_cny_eur": 8.1185,
+    "eu_sme_discount_pct": 0.15,
+    "china_mfn_duty_pct": 0.08,
+    "china_freight_low": 2000,
+    "china_freight_mid": 3500,
+    "china_freight_high": 5000,
+    "status": "FINAL — confirmed 2026-05-27"
+  },
+  "eu_machines": [
+    {
+      "brand": "Trumpf",
+      "model": "TruLaser 1030",
+      "power_kw": 3,
+      "capex_low": 95000,
+      "capex_mid": 115000,
+      "capex_high": 140000,
+      "arpol_fit": "low",
+      "note": "Entry-level; adequate for thin stainless"
+    },
+    {
+      "brand": "Trumpf",
+      "model": "TruLaser 3030",
+      "power_kw": 6,
+      "capex_low": 185000,
+      "capex_mid": 220000,
+      "capex_high": 270000,
+      "arpol_fit": "high",
+      "note": "EU recommended — best fit for ARPOL stainless-steel portfolio"
+    },
+    {
+      "brand": "Trumpf",
+      "model": "TruLaser 5030",
+      "power_kw": 12,
+      "capex_low": 310000,
+      "capex_mid": 380000,
+      "capex_high": 450000,
+      "arpol_fit": "low",
+      "note": "Overkill for thin stainless coupling geometry"
+    },
+    {
+      "brand": "Bystronic",
+      "model": "ByStar 3015",
+      "power_kw": 6,
+      "capex_low": 170000,
+      "capex_mid": 210000,
+      "capex_high": 260000,
+      "arpol_fit": "high",
+      "note": "EU recommended — strong Iberian service network"
+    },
+    {
+      "brand": "Bystronic",
+      "model": "ByStar 4020",
+      "power_kw": 10,
+      "capex_low": 250000,
+      "capex_mid": 310000,
+      "capex_high": 375000,
+      "arpol_fit": "medium",
+      "note": "Larger format than needed; better for future scale"
+    },
+    {
+      "brand": "Amada",
+      "model": "ENSIS-3015",
+      "power_kw": 9,
+      "capex_low": 200000,
+      "capex_mid": 250000,
+      "capex_high": 300000,
+      "arpol_fit": "medium",
+      "note": "Variable beam technology; efficient across thickness range"
+    },
+    {
+      "brand": "Amada",
+      "model": "FO-MII 3015NT",
+      "power_kw": 4,
+      "capex_low": 120000,
+      "capex_mid": 155000,
+      "capex_high": 190000,
+      "arpol_fit": "medium",
+      "note": "Mid-range option; may limit future capacity"
+    }
+  ],
+  "china_machines": [
+    {
+      "brand": "Bodor",
+      "model": "P3015A",
+      "power_kw": 3,
+      "capex_low": 18000,
+      "capex_mid": 25000,
+      "capex_high": 35000,
+      "arpol_fit": "medium",
+      "note": "Sheet only; no tube capability"
+    },
+    {
+      "brand": "Bodor",
+      "model": "P3015E",
+      "power_kw": 6,
+      "capex_low": 30000,
+      "capex_mid": 42000,
+      "capex_high": 55000,
+      "arpol_fit": "medium",
+      "note": "Good sheet cutter; consider tube addon"
+    },
+    {
+      "brand": "Bodor",
+      "model": "T230A",
+      "power_kw": 6,
+      "capex_low": 45000,
+      "capex_mid": 60000,
+      "capex_high": 75000,
+      "arpol_fit": "high",
+      "note": "China RECOMMENDED — Tube + Sheet; matches ARPOL pipe coupling geometry"
+    },
+    {
+      "brand": "HSG",
+      "model": "FS3015",
+      "power_kw": 3,
+      "capex_low": 15000,
+      "capex_mid": 22000,
+      "capex_high": 30000,
+      "arpol_fit": "low",
+      "note": "Budget option; limited after-sales in Spain"
+    },
+    {
+      "brand": "HSG",
+      "model": "FS3015E",
+      "power_kw": 6,
+      "capex_low": 28000,
+      "capex_mid": 38000,
+      "capex_high": 48000,
+      "arpol_fit": "medium",
+      "note": "Solid mid-tier; check distributor coverage"
+    },
+    {
+      "brand": "Han's Laser",
+      "model": "G3015F",
+      "power_kw": 3,
+      "capex_low": 20000,
+      "capex_mid": 28000,
+      "capex_high": 38000,
+      "arpol_fit": "medium",
+      "note": "Established Chinese brand; European office presence"
+    },
+    {
+      "brand": "Han's Laser",
+      "model": "G3015HF",
+      "power_kw": 8,
+      "capex_low": 55000,
+      "capex_mid": 75000,
+      "capex_high": 95000,
+      "arpol_fit": "medium",
+      "note": "High-power class; overkill for current ARPOL volumes"
+    }
+  ],
+  "maintenance": {
+    "eu_maintenance_low_pct": 0.05,
+    "eu_maintenance_mid_pct": 0.07,
+    "eu_maintenance_high_pct": 0.10,
+    "china_maintenance_low_pct": 0.03,
+    "china_maintenance_mid_pct": 0.05,
+    "china_maintenance_high_pct": 0.08,
+    "eu_consumables_low_pct": 0.04,
+    "eu_consumables_mid_pct": 0.06,
+    "eu_consumables_high_pct": 0.09,
+    "china_consumables_low_pct": 0.04,
+    "china_consumables_mid_pct": 0.06,
+    "china_consumables_high_pct": 0.09,
+    "china_parts_lead_time_weeks_min": 4,
+    "china_parts_lead_time_weeks_max": 12
+  },
+  "implementation_uplift": {
+    "installation_low_pct": 0.05,
+    "installation_mid_pct": 0.08,
+    "installation_high_pct": 0.12,
+    "commissioning_low_pct": 0.02,
+    "commissioning_mid_pct": 0.03,
+    "commissioning_high_pct": 0.05,
+    "training_low_pct": 0.01,
+    "training_mid_pct": 0.02,
+    "training_high_pct": 0.03,
+    "tooling_low_pct": 0.02,
+    "tooling_mid_pct": 0.03,
+    "tooling_high_pct": 0.05,
+    "spares_buffer_low_pct": 0.02,
+    "spares_buffer_mid_pct": 0.04,
+    "spares_buffer_high_pct": 0.06,
+    "total_uplift_mid_pct": 0.16,
+    "note": "Total one-time adder ~16% of CAPEX at mid estimates"
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "last_updated": "2026-05-27",
+    "author": "ARPOL × ESADE Consulting Team",
+    "note": "Base-case defaults. Yellow = PLACEHOLDER awaiting client data from Manuel via Prof. Felipe."
+  },
+  "current_state": {
+    "subcontract_annual_spend": {
+      "value": 120000,
+      "unit": "EUR/year",
+      "source": "Client placeholder (Manuel via Prof. Felipe)",
+      "status": "PLACEHOLDER",
+      "validated": false
+    },
+    "press_annual_opex": {
+      "value": 80000,
+      "unit": "EUR/year",
+      "source": "Client / INE benchmark",
+      "status": "PLACEHOLDER",
+      "validated": false
+    },
+    "scrap_rework_cost": {
+      "value": 15000,
+      "unit": "EUR/year",
+      "source": "Industry benchmark (% of revenue)",
+      "status": "PLACEHOLDER",
+      "validated": false
+    }
+  },
+  "volume": {
+    "current_volume_units": {
+      "value": 50000,
+      "unit": "units/year",
+      "source": "Client",
+      "status": "PLACEHOLDER",
+      "validated": false
+    },
+    "volume_growth_low": {
+      "value": 0.08,
+      "unit": "%/year",
+      "source": "Conservative scenario",
+      "status": "ASSUMED",
+      "validated": false
+    },
+    "volume_growth_base": {
+      "value": 0.15,
+      "unit": "%/year",
+      "source": "Derived from EUR4M->EUR8M plan by 2028",
+      "status": "ASSUMED",
+      "validated": false
+    },
+    "volume_growth_high": {
+      "value": 0.20,
+      "unit": "%/year",
+      "source": "Optimistic scenario",
+      "status": "ASSUMED",
+      "validated": false
+    }
+  },
+  "eu_insource": {
+    "eu_equipment_model": "Bystronic ByStar 3015 6kW",
+    "eu_equipment_cost_low": 144500,
+    "eu_equipment_cost_mid": 178500,
+    "eu_equipment_cost_high": 221000,
+    "eu_equipment_cost_note": "List prices Bystronic 6kW (170/210/260k) with 15% SME discount",
+    "eu_install_pct": 0.08,
+    "eu_commissioning_pct": 0.03,
+    "eu_training_cost": 10000,
+    "eu_tooling_cost": 5000,
+    "eu_spares_buffer": 8000,
+    "eu_ancillary_cost": 25000,
+    "eu_maintenance_pct": 0.07,
+    "eu_consumables_pct": 0.06,
+    "eu_delivery_weeks": 16
+  },
+  "china_insource": {
+    "china_equipment_model": "Bodor T230A Tube & Sheet 6kW",
+    "china_equipment_cost_low": 45000,
+    "china_equipment_cost_mid": 60000,
+    "china_equipment_cost_high": 75000,
+    "china_duty_pct_low": 0.08,
+    "china_duty_pct_mid": 0.08,
+    "china_duty_pct_high": 0.25,
+    "china_freight_mid": 3500,
+    "china_install_pct": 0.08,
+    "china_commissioning_pct": 0.03,
+    "china_training_cost": 8000,
+    "china_tooling_cost": 5000,
+    "china_spares_buffer": 8000,
+    "china_ancillary_cost": 25000,
+    "china_maintenance_pct": 0.05,
+    "china_consumables_pct": 0.06,
+    "china_delivery_weeks": 24,
+    "china_parts_lead_time_weeks": 8
+  },
+  "operations": {
+    "annual_hours": {
+      "value": 1800,
+      "unit": "hours/year",
+      "source": "1-shift: 225 days x 8h",
+      "status": "ASSUMED"
+    },
+    "two_shift_hours": {
+      "value": 3500,
+      "unit": "hours/year",
+      "source": "2-shift theoretical max",
+      "status": "ASSUMED"
+    },
+    "laser_power_kw": {
+      "value": 20,
+      "unit": "kW",
+      "source": "Supplier specs (incl. chiller + extraction)"
+    },
+    "electricity_rate": {
+      "value": 0.18,
+      "unit": "EUR/kWh",
+      "source": "Eurostat Spanish industrial Q4 2025"
+    },
+    "consumables_per_hr": {
+      "value": 6.0,
+      "unit": "EUR/hour",
+      "source": "Industry benchmark (nozzles, lenses, assist gas)"
+    },
+    "operator_wage_loaded": {
+      "value": 35000,
+      "unit": "EUR/year",
+      "source": "INE Spanish manufacturing wages incl. social charges"
+    },
+    "operators_required": {
+      "value": 1,
+      "unit": "FTE",
+      "source": "Standard 1-shift assumption",
+      "status": "ASSUMED"
+    }
+  },
+  "working_capital": {
+    "coil_skus_per_thickness": {
+      "value": 8,
+      "source": "Manuel interview",
+      "status": "CONFIRMED",
+      "validated": true
+    },
+    "thickness_grades": {
+      "value": 5,
+      "source": "Client estimate",
+      "status": "ASSUMED"
+    },
+    "avg_inventory_per_sku_eur": {
+      "value": 4000,
+      "source": "Client / steel pricing benchmark"
+    },
+    "inventory_holding_rate": {
+      "value": 0.20,
+      "source": "Industry benchmark (15-25% for industrial SMEs)"
+    },
+    "sku_reduction_rate": {
+      "value": 0.70,
+      "source": "Hypothesis from Manuel interview",
+      "status": "PLACEHOLDER — to validate",
+      "validated": false
+    }
+  },
+  "financial": {
+    "discount_rate": {
+      "value": 0.08,
+      "source": "Spanish SME WACC proxy"
+    },
+    "inflation_rate": {
+      "value": 0.025,
+      "source": "Eurozone target / consensus forecast"
+    },
+    "payback_hurdle_years": {
+      "value": 4,
+      "source": "Spanish SME benchmark (to validate with ARPOL Finance)",
+      "status": "ASSUMED"
+    },
+    "equipment_life_years": {
+      "value": 8,
+      "source": "Spanish accounting standards"
+    }
+  }
+}
