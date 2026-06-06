@@ -61,7 +61,7 @@ def compute_china_capex_breakdown(a: dict) -> dict:
     total       = equip + duty + freight + install + commission + training + tooling + spares + ancillary
     return {
         "Equipment (ex-works)"     : equip,
-        "Import Duty (8% MFN)"     : duty,
+        "Import Duty (4.5% MFN)"   : duty,
         "Freight (China → Spain)"  : freight,
         "Installation"             : install,
         "Commissioning"            : commission,
@@ -101,9 +101,10 @@ def compute_annual_insource_opex(a: dict, scenario: str, year: int) -> dict:
     # Consumables: per-hour rate (inflated)
     consumables = a["annual_hours"] * a["consumables_per_hr"] * inf
 
-    # Maintenance: % of original CAPEX (not inflated — contractual)
+    # Maintenance: % of equipment cost only, inflated annually — matches Excel model
     maint_pct = a["eu_maintenance_pct"] if scenario == "eu_insource" else a["china_maintenance_pct"]
-    maintenance = capex * maint_pct
+    equip_cost = a["eu_equipment_cost"] if scenario == "eu_insource" else a["china_equipment_cost"]
+    maintenance = equip_cost * maint_pct * inf
 
     # Labour: annual wage × headcount (inflated)
     labour = a["operator_wage"] * a["num_operators"] * inf
@@ -131,11 +132,13 @@ def compute_annual_outsource_cost(a: dict, year: int) -> dict:
 
     subcontract = a["subcontract_annual_spend"] * vol_growth
     press_opex  = a["press_annual_opex"]        * inf
+    logistics   = a.get("logistics_cost", 0)    * inf
     scrap_rework= a["scrap_rework_cost"]        * inf
-    total       = subcontract + press_opex + scrap_rework
+    total       = subcontract + press_opex + logistics + scrap_rework
     return {
         "Subcontract Laser-Cutting" : subcontract,
         "Press Operational Cost"    : press_opex,
+        "Logistics (subcontract)"   : logistics,
         "Scrap & Rework"            : scrap_rework,
         "Total Cost"                : total,
     }
@@ -276,9 +279,9 @@ def compute_breakeven_utilization(a: dict) -> dict:
     for scenario in ["eu_insource", "china_insource"]:
         # OpEx varies linearly with hours (energy + consumables) + fixed (maintenance + labour)
         # We solve: fixed + variable_rate × hours = outsource_yr1
-        capex        = get_total_capex(a, scenario)
         maint_pct    = a["eu_maintenance_pct"] if scenario == "eu_insource" else a["china_maintenance_pct"]
-        fixed        = capex * maint_pct + a["operator_wage"] * a["num_operators"]
+        equip_cost   = a["eu_equipment_cost"] if scenario == "eu_insource" else a["china_equipment_cost"]
+        fixed        = equip_cost * maint_pct + a["operator_wage"] * a["num_operators"]
         variable_phr = a["laser_power_kw"] * a["electricity_rate"] + a["consumables_per_hr"]
 
         if variable_phr <= 0:

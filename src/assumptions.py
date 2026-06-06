@@ -52,6 +52,7 @@ def get_default_assumptions() -> dict:
         # ── Current state (outsourcing baseline) ────────────────────────
         "subcontract_annual_spend" : cs["subcontract_annual_spend"]["value"],
         "press_annual_opex"        : cs["press_annual_opex"]["value"],
+        "logistics_cost"           : cs["logistics_cost"]["value"],
         "scrap_rework_cost"        : cs["scrap_rework_cost"]["value"],
 
         # ── Volume ──────────────────────────────────────────────────────

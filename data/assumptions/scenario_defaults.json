@@ -1,40 +1,47 @@
 {
   "metadata": {
-    "version": "1.0",
-    "last_updated": "2026-05-27",
+    "version": "2.0",
+    "last_updated": "2026-06-06",
     "author": "ARPOL × ESADE Consulting Team",
-    "note": "Base-case defaults. Yellow = PLACEHOLDER awaiting client data from Manuel via Prof. Felipe."
+    "note": "All values updated from ARPOL_TCO_Model_Final.xlsx — client-confirmed actuals as of June 2026."
   },
   "current_state": {
     "subcontract_annual_spend": {
-      "value": 120000,
+      "value": 104872,
       "unit": "EUR/year",
-      "source": "Client placeholder (Manuel via Prof. Felipe)",
-      "status": "PLACEHOLDER",
-      "validated": false
+      "source": "Client (Manuel via Prof. Felipe) — 2026 actual: Contracurva €21,950 + Carcasa €65,980 + Acero €16,942 = €104,872",
+      "status": "CONFIRMED",
+      "validated": true
     },
     "press_annual_opex": {
-      "value": 80000,
+      "value": 14789,
       "unit": "EUR/year",
-      "source": "Client / INE benchmark",
-      "status": "PLACEHOLDER",
-      "validated": false
+      "source": "Client-confirmed (ARPOL) — €23/h press rate × 643 h/year (403h production + 240h setup/changeover, 2023). Labour + energy + maintenance on 25-yr-old press.",
+      "status": "CONFIRMED",
+      "validated": true
+    },
+    "logistics_cost": {
+      "value": 7500,
+      "unit": "EUR/year",
+      "source": "Client-confirmed (ARPOL) — 2 trips/week × 3h × €23/h × 50 weeks. Range €7,000–€10,000. Eliminated under both insource scenarios.",
+      "status": "CONFIRMED",
+      "validated": true
     },
     "scrap_rework_cost": {
-      "value": 15000,
+      "value": 13202,
       "unit": "EUR/year",
-      "source": "Industry benchmark (% of revenue)",
-      "status": "PLACEHOLDER",
-      "validated": false
+      "source": "Client-confirmed actual. Scrap falls materially under laser insourcing as the strip/press process is retired.",
+      "status": "CONFIRMED",
+      "validated": true
     }
   },
   "volume": {
     "current_volume_units": {
-      "value": 50000,
+      "value": 54346,
       "unit": "units/year",
-      "source": "Client",
-      "status": "PLACEHOLDER",
-      "validated": false
+      "source": "Client — 2025 total units across all families; laser-cut subset (NEO, REP IBXR, FIX, INSTAL IBX) ~35,265 units",
+      "status": "CONFIRMED",
+      "validated": true
     },
     "volume_growth_low": {
       "value": 0.08,
@@ -46,9 +53,9 @@
     "volume_growth_base": {
       "value": 0.15,
       "unit": "%/year",
-      "source": "Derived from EUR4M->EUR8M plan by 2028",
-      "status": "ASSUMED",
-      "validated": false
+      "source": "Derived from €4M→€8M plan by 2028. Supported by confirmed 2025 revenue €6,131,801.",
+      "status": "CONFIRMED",
+      "validated": true
     },
     "volume_growth_high": {
       "value": 0.20,
@@ -59,35 +66,35 @@
     }
   },
   "eu_insource": {
-    "eu_equipment_model": "Bystronic ByStar 3015 6kW",
-    "eu_equipment_cost_low": 144500,
-    "eu_equipment_cost_mid": 178500,
-    "eu_equipment_cost_high": 221000,
-    "eu_equipment_cost_note": "List prices Bystronic 6kW (170/210/260k) with 15% SME discount",
-    "eu_install_pct": 0.08,
+    "eu_equipment_model": "Trumpf TruLaser 3030 6kW",
+    "eu_equipment_cost_low": 185000,
+    "eu_equipment_cost_mid": 220000,
+    "eu_equipment_cost_high": 270000,
+    "eu_equipment_cost_note": "Trumpf TruLaser 3030 fiber 6kW benchmark mid €220,000 (range €185,000–€270,000). Sources: Trumpf product portfolio & MM MaschinenMarkt trade press, 2023. Trumpf turnkey quote €600k incl. automation is not comparable to machine-only.",
+    "eu_install_pct": 0.09,
     "eu_commissioning_pct": 0.03,
     "eu_training_cost": 10000,
-    "eu_tooling_cost": 5000,
-    "eu_spares_buffer": 8000,
+    "eu_tooling_cost": 0,
+    "eu_spares_buffer": 0,
     "eu_ancillary_cost": 25000,
     "eu_maintenance_pct": 0.07,
     "eu_consumables_pct": 0.06,
     "eu_delivery_weeks": 16
   },
   "china_insource": {
-    "china_equipment_model": "Bodor T230A Tube & Sheet 6kW",
-    "china_equipment_cost_low": 45000,
-    "china_equipment_cost_mid": 60000,
-    "china_equipment_cost_high": 75000,
-    "china_duty_pct_low": 0.08,
-    "china_duty_pct_mid": 0.08,
+    "china_equipment_model": "Bodor P3015E 6kW",
+    "china_equipment_cost_low": 30000,
+    "china_equipment_cost_mid": 42000,
+    "china_equipment_cost_high": 55000,
+    "china_duty_pct_low": 0.045,
+    "china_duty_pct_mid": 0.045,
     "china_duty_pct_high": 0.25,
     "china_freight_mid": 3500,
-    "china_install_pct": 0.08,
+    "china_install_pct": 0.17,
     "china_commissioning_pct": 0.03,
     "china_training_cost": 8000,
-    "china_tooling_cost": 5000,
-    "china_spares_buffer": 8000,
+    "china_tooling_cost": 0,
+    "china_spares_buffer": 0,
     "china_ancillary_cost": 25000,
     "china_maintenance_pct": 0.05,
     "china_consumables_pct": 0.06,
@@ -98,8 +105,8 @@
     "annual_hours": {
       "value": 1800,
       "unit": "hours/year",
-      "source": "1-shift: 225 days x 8h",
-      "status": "ASSUMED"
+      "source": "Client / 1-shift assumption (~225 working days × 8h)",
+      "status": "CONFIRMED"
     },
     "two_shift_hours": {
       "value": 3500,
@@ -110,27 +117,27 @@
     "laser_power_kw": {
       "value": 20,
       "unit": "kW",
-      "source": "Supplier specs (incl. chiller + extraction)"
+      "source": "IPG resonator + auxiliary (chiller, extraction) supplier specifications, 6kW-class fiber system, 2024. Includes auxiliary loads."
     },
     "electricity_rate": {
-      "value": 0.18,
+      "value": 0.0971,
       "unit": "EUR/kWh",
-      "source": "Eurostat Spanish industrial Q4 2025"
+      "source": "Eurostat nrg_pc_205, Spain 2025-S2, Band IC (500–1,999 MWh/year), all taxes included (I_TAX). €0.0971/kWh. Pulled 2025-05-25."
     },
     "consumables_per_hr": {
-      "value": 6.0,
+      "value": 5.0,
       "unit": "EUR/hour",
-      "source": "Industry benchmark (nozzles, lenses, assist gas)"
+      "source": "VDMA consumables benchmarks (nozzles, lenses, assist gas) + supplier data, 2024. ~6% of machine CAPEX/yr at 1,800 hrs."
     },
     "operator_wage_loaded": {
       "value": 35000,
       "unit": "EUR/year",
-      "source": "INE Spanish manufacturing wages incl. social charges"
+      "source": "Eurostat lc_an_struc_r2, Spain NACE C Manufacturing; cross-checked vs INE Encuesta Anual de Coste Laboral. ~€20/hr fully loaded. Includes social charges."
     },
     "operators_required": {
       "value": 1,
       "unit": "FTE",
-      "source": "Standard 1-shift assumption",
+      "source": "Standard 1-shift operation",
       "status": "ASSUMED"
     }
   },
@@ -156,7 +163,7 @@
     },
     "sku_reduction_rate": {
       "value": 0.70,
-      "source": "Hypothesis from Manuel interview",
+      "source": "Hypothesis from Manuel interview — coils unified by thickness; sheets serve more SKUs",
       "status": "PLACEHOLDER — to validate",
       "validated": false
     }
@@ -164,20 +171,20 @@
   "financial": {
     "discount_rate": {
       "value": 0.08,
-      "source": "Spanish SME WACC proxy"
+      "source": "Spanish SME WACC proxy (7–10% range); validate with ARPOL Finance (CFO Gadea Alonso-Peraita)"
     },
     "inflation_rate": {
       "value": 0.025,
-      "source": "Eurozone target / consensus forecast"
+      "source": "ECB price-stability objective (2% medium-term) + near-term Eurozone consensus"
     },
     "payback_hurdle_years": {
       "value": 4,
-      "source": "Spanish SME benchmark (to validate with ARPOL Finance)",
+      "source": "Spanish SME benchmark (3–5 years); validate with ARPOL Finance",
       "status": "ASSUMED"
     },
     "equipment_life_years": {
       "value": 8,
-      "source": "Spanish accounting standards"
+      "source": "Spanish corporate tax depreciation tables, Ley 27/2014 — industrial machinery 8–10 year useful life"
     }
   }
 }

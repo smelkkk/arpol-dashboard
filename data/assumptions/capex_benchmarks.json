@@ -1,13 +1,14 @@
 {
   "metadata": {
-    "source": "Vendor published pricing + ESADE research, May 2026",
+    "source": "Vendor published pricing + ESADE research, May–June 2026",
     "ecb_rate_cny_eur": 8.1185,
     "eu_sme_discount_pct": 0.15,
-    "china_mfn_duty_pct": 0.08,
+    "china_mfn_duty_pct": 0.045,
+    "china_mfn_duty_source": "EU Access2Markets, HS 8456.11.90, CN→ES, 27 May 2026, 4.5% MFN, Reg R1821/16. Corrects earlier 8% assumption.",
     "china_freight_low": 2000,
     "china_freight_mid": 3500,
     "china_freight_high": 5000,
-    "status": "FINAL — confirmed 2026-05-27"
+    "status": "UPDATED — 2026-06-06 (duty corrected to 4.5% MFN per EU Access2Markets)"
   },
   "eu_machines": [
     {
