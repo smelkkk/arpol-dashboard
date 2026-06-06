@@ -159,13 +159,13 @@ def _render_assumption_controls(defaults: dict) -> dict:
             max_value=95_000,
             value=int(defaults["china_equipment_cost"]),
             step=2_500,
-            help="Bodor T230A T&S 6kW: €45K–€75K. +8% MFN duty + €3.5K freight applied automatically.",
+            help="Bodor P3015E 6kW: €30K–€55K. +4.5% MFN duty + €3.5K freight applied automatically.",
         )
         duty_pct = st.select_slider(
             t("china_duty") + " (%)",
-            options=[8, 15, 25],
-            value=int(defaults["china_duty_pct"] * 100),
-            help="Base: 8% MFN. Sensitivity: 15% (partial tariff escalation), 25% (worst-case trade scenario).",
+            options=[4.5, 8, 15, 25],
+            value=round(defaults["china_duty_pct"] * 100, 1),
+            help="Base: 4.5% MFN (EU Access2Markets HS 8456.11.90, verified May 2026). Sensitivity: 8%, 15%, 25% (worst-case trade scenario).",
         )
         overrides["china_duty_pct"] = duty_pct / 100.0
 
