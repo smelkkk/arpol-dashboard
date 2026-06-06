@@ -28,23 +28,29 @@ wc = compute_wc_release(assumptions)
 
 # ── Header ─────────────────────────────────────────────────────────────────
 st.title(f"📦 {t('title_wc')}")
-st.markdown(
-    """
-    > **Key strategic insight from Manuel (CEO interview):**
-    > ARPOL currently holds ~8 different coil SKUs per material thickness to produce different ring geometries.
-    > Switching to laser-cutting from **coil stock → sheet stock** collapses all rings of a given thickness
-    > into **one sheet SKU**. This is a major working capital and procurement complexity reduction —
-    > independent of which laser supplier is chosen.
-    """
-    if lang == "en" else
-    """
-    > **Perspectiva estratégica clave de Manuel (entrevista CEO):**
-    > ARPOL actualmente mantiene ~8 SKU de bobinas diferentes por espesor de material para producir
-    > diferentes geometrías de anillos. Cambiar de **stock de bobinas → stock de chapas** colapsa
-    > todos los anillos de un espesor dado en **un único SKU de chapa**. Esta es una reducción
-    > importante de capital de trabajo y complejidad de aprovisionamiento — independiente del proveedor de láser elegido.
-    """
-)
+en_insight = """
+<div style='background:#EBF5FB;border-left:4px solid #2980B9;padding:14px 18px;border-radius:4px;margin-bottom:16px'>
+<span style='font-size:0.72rem;font-weight:700;letter-spacing:0.08em;color:#2980B9;text-transform:uppercase'>
+Strategic insight — Manuel Pérez, CEO interview
+</span><br><br>
+ARPOL currently holds <strong>~8 coil SKUs per material thickness</strong> to produce different ring geometries.
+Insourcing laser-cutting enables a shift from coil stock to sheet stock, collapsing all rings of a given
+thickness into a single sheet SKU. This is a meaningful working capital and procurement complexity reduction —
+independent of which laser supplier is selected.
+</div>
+"""
+es_insight = """
+<div style='background:#EBF5FB;border-left:4px solid #2980B9;padding:14px 18px;border-radius:4px;margin-bottom:16px'>
+<span style='font-size:0.72rem;font-weight:700;letter-spacing:0.08em;color:#2980B9;text-transform:uppercase'>
+Perspectiva estratégica — Manuel Pérez, entrevista CEO
+</span><br><br>
+ARPOL mantiene actualmente <strong>~8 SKU de bobinas por espesor de material</strong> para producir distintas geometrías de anillo.
+La internalización del corte láser permite pasar de bobina a chapa, consolidando todos los anillos de un
+espesor dado en un único SKU de chapa. Esta es una reducción significativa de capital de trabajo y
+complejidad de aprovisionamiento — independiente del proveedor láser seleccionado.
+</div>
+"""
+st.markdown(en_insight if lang == "en" else es_insight, unsafe_allow_html=True)
 st.divider()
 
 

@@ -26,13 +26,6 @@ lang        = get_lang()
 
 # ── Header ─────────────────────────────────────────────────────────────────
 st.title(f"🎯 {t('title_sensitivity')}")
-st.markdown(
-    "_Which variables most affect the recommendation? "
-    "Use these charts to understand what needs to be validated before Board presentation._"
-    if lang == "en" else
-    "_¿Qué variables afectan más la recomendación? "
-    "Use estos gráficos para entender qué necesita validarse antes de la presentación al Consejo._"
-)
 st.divider()
 
 

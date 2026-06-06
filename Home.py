@@ -158,8 +158,7 @@ st.markdown(
     """
     <div style='margin-top:40px;padding:12px;text-align:center;
                 color:#95a5a6;font-size:0.78rem;border-top:1px solid #ecf0f1'>
-        ARPOL × ESADE Consulting 2026 ·
-        <i>Results are directional — validate placeholders before Board presentation</i>
+        ARPOL × ESADE Consulting 2026 · Indicative model — figures subject to final supplier confirmation
     </div>
     """,
     unsafe_allow_html=True,
