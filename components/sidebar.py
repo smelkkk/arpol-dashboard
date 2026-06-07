@@ -179,19 +179,14 @@ def _render_assumption_controls(defaults: dict) -> dict:
         )
         overrides["china_maintenance_pct"] = cn_maint_pct / 100.0
 
-    # ── Machine Scale ────────────────────────────────────────────────────
-    with st.expander("⚙️ " + t("num_machines"), expanded=True):
-        st.caption("Base case: 1 machine covers current volumes + 2-shift upside." if get_lang() == "en" else
-                   "Caso base: 1 máquina cubre volúmenes actuales + capacidad de 2 turnos.")
+    # ── Operations ──────────────────────────────────────────────────────
+    with st.expander(t("operations_label"), expanded=False):
         overrides["num_machines"] = st.select_slider(
             t("num_machines"),
             options=[1, 2, 3],
             value=int(defaults.get("num_machines", 1)),
             help="Each additional machine multiplies CAPEX and OpEx. Use to test high-volume growth scenarios.",
         )
-
-    # ── Operations ──────────────────────────────────────────────────────
-    with st.expander(t("operations_label"), expanded=False):
         overrides["num_operators"] = st.select_slider(
             t("operators"),
             options=[1, 2, 3],
