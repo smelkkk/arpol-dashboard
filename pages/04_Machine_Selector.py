@@ -127,9 +127,9 @@ st.divider()
 
 st.subheader("🇨🇳 " + ("China Fiber Laser Options" if lang == "en" else "Opciones Láser de Fibra China"))
 st.caption(
-    f"Ex-works prices. Add {mfn_duty*100:.0f}% MFN import duty + €{freight_mid:,.0f} freight (mid estimate)."
+    f"Ex-works prices. Add {mfn_duty*100:.1f}% MFN import duty + €{freight_mid:,.0f} freight (mid estimate)."
     if lang == "en" else
-    f"Precios en origen. Añadir {mfn_duty*100:.0f}% arancel MFN + €{freight_mid:,.0f} flete (estimado medio)."
+    f"Precios en origen. Añadir {mfn_duty*100:.1f}% arancel MFN + €{freight_mid:,.0f} flete (estimado medio)."
 )
 
 china_rows = []
@@ -170,7 +170,7 @@ col1, col2, col3, col4 = st.columns(4)
 with col1:
     st.metric("Ex-Works Mid", f"€{cn_sel['capex_mid']:,.0f}")
 with col2:
-    st.metric(f"+{mfn_duty*100:.0f}% duty + freight", f"€{cn_landed_mid:,.0f} landed")
+    st.metric(f"+{mfn_duty*100:.1f}% duty + freight", f"€{cn_landed_mid:,.0f} landed")
 with col3:
     a_test_cn = {**assumptions, "china_equipment_cost": cn_sel["capex_mid"],
                  "china_landed_cost": cn_landed_mid}

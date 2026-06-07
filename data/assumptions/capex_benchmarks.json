@@ -100,8 +100,8 @@
       "capex_low": 30000,
       "capex_mid": 42000,
       "capex_high": 55000,
-      "arpol_fit": "medium",
-      "note": "Good sheet cutter; consider tube addon"
+      "arpol_fit": "high",
+      "note": "China model baseline — sheet cutter well-matched to ARPOL flat-sheet stainless geometry"
     },
     {
       "brand": "Bodor",
@@ -110,8 +110,8 @@
       "capex_low": 45000,
       "capex_mid": 60000,
       "capex_high": 75000,
-      "arpol_fit": "high",
-      "note": "China RECOMMENDED — Tube + Sheet; matches ARPOL pipe coupling geometry"
+      "arpol_fit": "medium",
+      "note": "Tube + Sheet capability; higher cost than needed for ARPOL's flat-sheet cutting profile"
     },
     {
       "brand": "HSG",
