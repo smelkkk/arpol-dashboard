@@ -94,6 +94,7 @@ def get_default_assumptions() -> dict:
         "china_model_name"         : cn["china_equipment_model"],
 
         # ── Operations ──────────────────────────────────────────────────
+        "num_machines"             : 1,
         "annual_hours"             : ops["annual_hours"]["value"],
         "laser_power_kw"           : ops["laser_power_kw"]["value"],
         "electricity_rate"         : ops["electricity_rate"]["value"],

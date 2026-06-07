@@ -25,6 +25,7 @@ def compute_eu_capex_breakdown(a: dict) -> dict:
     Return Year-0 EU CAPEX line-by-line breakdown.
     All values are positive (costs); sign applied at cashflow level.
     """
+    n           = a.get("num_machines", 1)
     equip       = a["eu_equipment_cost"]
     install     = equip * a["eu_install_pct"]
     commission  = equip * a["eu_commissioning_pct"]
@@ -32,15 +33,16 @@ def compute_eu_capex_breakdown(a: dict) -> dict:
     tooling     = a["eu_tooling_cost"]
     spares      = a["eu_spares_buffer"]
     ancillary   = a["eu_ancillary_cost"]
-    total       = equip + install + commission + training + tooling + spares + ancillary
+    per_machine = equip + install + commission + training + tooling + spares + ancillary
+    total       = per_machine * n
     return {
-        "Equipment"                : equip,
-        "Installation"             : install,
-        "Commissioning"            : commission,
-        "Training"                 : training,
-        "Tooling & Fixtures"       : tooling,
-        "Spare Parts Buffer"       : spares,
-        "Ancillary (extraction/chiller)" : ancillary,
+        "Equipment"                : equip * n,
+        "Installation"             : install * n,
+        "Commissioning"            : commission * n,
+        "Training"                 : training * n,
+        "Tooling & Fixtures"       : tooling * n,
+        "Spare Parts Buffer"       : spares * n,
+        "Ancillary (extraction/chiller)" : ancillary * n,
         "Total CAPEX"              : total,
     }
 
@@ -49,6 +51,7 @@ def compute_china_capex_breakdown(a: dict) -> dict:
     """
     Return Year-0 China CAPEX line-by-line breakdown.
     """
+    n           = a.get("num_machines", 1)
     equip       = a["china_equipment_cost"]
     duty        = equip * a["china_duty_pct"]
     freight     = a["china_freight"]
@@ -58,17 +61,18 @@ def compute_china_capex_breakdown(a: dict) -> dict:
     tooling     = a["china_tooling_cost"]
     spares      = a["china_spares_buffer"]
     ancillary   = a["china_ancillary_cost"]
-    total       = equip + duty + freight + install + commission + training + tooling + spares + ancillary
+    per_machine = equip + duty + freight + install + commission + training + tooling + spares + ancillary
+    total       = per_machine * n
     return {
-        "Equipment (ex-works)"     : equip,
-        "Import Duty (4.5% MFN)"   : duty,
-        "Freight (China → Spain)"  : freight,
-        "Installation"             : install,
-        "Commissioning"            : commission,
-        "Training"                 : training,
-        "Tooling & Fixtures"       : tooling,
-        "Spare Parts Buffer"       : spares,
-        "Ancillary (extraction/chiller)" : ancillary,
+        "Equipment (ex-works)"     : equip * n,
+        "Import Duty (4.5% MFN)"   : duty * n,
+        "Freight (China → Spain)"  : freight * n,
+        "Installation"             : install * n,
+        "Commissioning"            : commission * n,
+        "Training"                 : training * n,
+        "Tooling & Fixtures"       : tooling * n,
+        "Spare Parts Buffer"       : spares * n,
+        "Ancillary (extraction/chiller)" : ancillary * n,
         "Total CAPEX"              : total,
     }
 
@@ -93,21 +97,21 @@ def compute_annual_insource_opex(a: dict, scenario: str, year: int) -> dict:
     Returns a dict of line items (all positive = costs).
     """
     inf = (1 + a["inflation_rate"]) ** (year - 1)
-    capex = get_total_capex(a, scenario)
+    n   = a.get("num_machines", 1)
 
-    # Energy: hours × power × rate (inflated)
-    energy = a["annual_hours"] * a["laser_power_kw"] * a["electricity_rate"] * inf
+    # Energy: hours × power × rate (inflated) — scales with machines
+    energy = a["annual_hours"] * a["laser_power_kw"] * a["electricity_rate"] * inf * n
 
-    # Consumables: per-hour rate (inflated)
-    consumables = a["annual_hours"] * a["consumables_per_hr"] * inf
+    # Consumables: per-hour rate (inflated) — scales with machines
+    consumables = a["annual_hours"] * a["consumables_per_hr"] * inf * n
 
-    # Maintenance: % of equipment cost only, inflated annually — matches Excel model
+    # Maintenance: % of equipment cost only, inflated annually — scales with machines
     maint_pct = a["eu_maintenance_pct"] if scenario == "eu_insource" else a["china_maintenance_pct"]
     equip_cost = a["eu_equipment_cost"] if scenario == "eu_insource" else a["china_equipment_cost"]
-    maintenance = equip_cost * maint_pct * inf
+    maintenance = equip_cost * maint_pct * inf * n
 
-    # Labour: annual wage × headcount (inflated)
-    labour = a["operator_wage"] * a["num_operators"] * inf
+    # Labour: 1 operator per machine per shift (inflated)
+    labour = a["operator_wage"] * n * inf
 
     total = energy + consumables + maintenance + labour
     return {
@@ -279,9 +283,10 @@ def compute_breakeven_utilization(a: dict) -> dict:
     for scenario in ["eu_insource", "china_insource"]:
         # OpEx varies linearly with hours (energy + consumables) + fixed (maintenance + labour)
         # We solve: fixed + variable_rate × hours = outsource_yr1
+        n            = a.get("num_machines", 1)
         maint_pct    = a["eu_maintenance_pct"] if scenario == "eu_insource" else a["china_maintenance_pct"]
         equip_cost   = a["eu_equipment_cost"] if scenario == "eu_insource" else a["china_equipment_cost"]
-        fixed        = equip_cost * maint_pct + a["operator_wage"] * a["num_operators"]
+        fixed        = equip_cost * maint_pct * n + a["operator_wage"] * n
         variable_phr = a["laser_power_kw"] * a["electricity_rate"] + a["consumables_per_hr"]
 
         if variable_phr <= 0:

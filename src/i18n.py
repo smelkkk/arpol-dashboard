@@ -147,6 +147,7 @@ _TRANSLATIONS = {
     "eu_equipment_cost"     : {"en": "EU Equipment Cost",           "es": "Costo Equipo UE"},
     "china_equipment_cost"  : {"en": "China Equipment Cost",        "es": "Costo Equipo China"},
     "china_duty"            : {"en": "China Import Duty",           "es": "Aranceles de Importación China"},
+    "num_machines"          : {"en": "Number of Machines",          "es": "Número de Máquinas"},
     "operators"             : {"en": "Operators Required",          "es": "Operadores Requeridos"},
     "annual_hours"          : {"en": "Annual Operating Hours",      "es": "Horas Operativas Anuales"},
     "eu_maintenance"        : {"en": "EU Maintenance (% CAPEX/yr)", "es": "Mantenimiento UE (% CAPEX/año)"},
