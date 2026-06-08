@@ -71,7 +71,7 @@ _TRANSLATIONS = {
     "years"                 : {"en": "years",                       "es": "años"},
     "year"                  : {"en": "Year",                        "es": "Año"},
     "na"                    : {"en": "n/a",                         "es": "n/d"},
-    "not_within_5yr"        : {"en": "Beyond Year 5",              "es": "Más de 5 años"},
+    "not_within_5yr"        : {"en": "Beyond Year 9",              "es": "Más de 9 años"},
 
     # ── Chart axis / labels ─────────────────────────────────────────────────
     "cumulative_cash_flow"  : {"en": "Cumulative Cash Flow (€)",    "es": "Flujo de Caja Acumulado (€)"},

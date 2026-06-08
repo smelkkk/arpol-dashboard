@@ -17,7 +17,7 @@ st.set_page_config(
 
 from src.i18n import t, get_lang
 from src.assumptions import get_default_assumptions, merge_overrides
-from src.tco_engine import build_summary_kpis
+from src.tco_engine import build_summary_kpis, compute_scenario_cashflows, compute_payback_year
 from src.working_capital import compute_wc_release
 from components.sidebar import render_sidebar
 from components.kpi_cards import render_executive_kpis, render_capex_row, render_roi_npv_row
@@ -45,6 +45,11 @@ kpis = build_summary_kpis(assumptions)
 wc   = compute_wc_release(assumptions)
 kpis["wc_release"]    = wc["inv_released_onetime_eur"]
 kpis["discount_rate"] = assumptions["discount_rate"] * 100
+
+# Extend to 9-year horizon for concrete payback and chart visibility
+df_chart = compute_scenario_cashflows(assumptions, year_range=range(10))
+kpis["payback_eu"]    = compute_payback_year(df_chart, "eu_insource")
+kpis["payback_china"] = compute_payback_year(df_chart, "china_insource")
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -91,16 +96,9 @@ render_roi_npv_row(kpis)
 
 st.subheader("📈 " + ("Cash Flow Analysis" if get_lang() == "en" else "Análisis de Flujo de Caja"))
 
-col_left, col_right = st.columns(2)
-df = kpis["df"]
-
-with col_left:
-    st.plotly_chart(cumulative_cashflow_chart(df), use_container_width=True)
-
-with col_right:
-    st.plotly_chart(tco_comparison_bar(kpis), use_container_width=True)
-
-st.plotly_chart(cumulative_savings_chart(df), use_container_width=True)
+st.plotly_chart(cumulative_cashflow_chart(df_chart), use_container_width=True)
+st.plotly_chart(tco_comparison_bar(kpis), use_container_width=True)
+st.plotly_chart(cumulative_savings_chart(df_chart), use_container_width=True)
 
 
 # ═══════════════════════════════════════════════════════════════════════════

@@ -82,7 +82,7 @@ def cumulative_cashflow_chart(df: pd.DataFrame) -> go.Figure:
     fig.update_layout(
         **_base_layout(
             title=dict(text=t("cumulative_cash_flow"), font=dict(size=16)),
-            xaxis=dict(title=t("year"), tickvals=years, ticktext=YEAR_LABELS),
+            xaxis=dict(title=t("year"), tickvals=years, ticktext=[f"Year {y}" for y in years]),
             yaxis=dict(title="€", tickformat=",.0f"),
             legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
         )
@@ -161,7 +161,7 @@ def annual_cashflow_grouped_bar(df: pd.DataFrame) -> go.Figure:
         **_base_layout(
             barmode="group",
             title=dict(text=t("annual_cash_flow"), font=dict(size=16)),
-            xaxis=dict(title=t("year"), tickvals=years, ticktext=YEAR_LABELS),
+            xaxis=dict(title=t("year"), tickvals=years, ticktext=[f"Year {y}" for y in years]),
             yaxis=dict(title="€", tickformat=",.0f"),
             legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
         )
@@ -211,7 +211,7 @@ def cumulative_savings_chart(df: pd.DataFrame) -> go.Figure:
     fig.update_layout(
         **_base_layout(
             title=dict(text=t("cumulative_savings"), font=dict(size=16)),
-            xaxis=dict(title=t("year"), tickvals=years, ticktext=YEAR_LABELS),
+            xaxis=dict(title=t("year"), tickvals=years, ticktext=[f"Year {y}" for y in years]),
             yaxis=dict(title="€", tickformat=",.0f"),
             legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
         )

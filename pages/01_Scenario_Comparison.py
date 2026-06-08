@@ -13,6 +13,8 @@ from src.tco_engine import (
     compute_china_capex_breakdown,
     compute_annual_insource_opex,
     compute_annual_outsource_cost,
+    compute_scenario_cashflows,
+    compute_payback_year,
     get_total_capex,
 )
 from src.working_capital import compute_wc_release
@@ -35,7 +37,11 @@ overrides   = render_sidebar(defaults)
 assumptions = merge_overrides(defaults, overrides)
 kpis        = build_summary_kpis(assumptions)
 df          = kpis["df"]
+df_chart    = compute_scenario_cashflows(assumptions, year_range=range(10))
 lang        = get_lang()
+
+pb_eu    = compute_payback_year(df_chart, "eu_insource")
+pb_china = compute_payback_year(df_chart, "china_insource")
 
 
 # ── Header ─────────────────────────────────────────────────────────────────
@@ -127,9 +133,6 @@ st.subheader(f"🏁 {t('cumulative_savings')} & Payback")
 
 col_a, col_b, col_c = st.columns(3)
 
-pb_eu    = kpis["payback_eu"]
-pb_china = kpis["payback_china"]
-
 with col_a:
     st.metric(
         t("payback_eu"),
@@ -150,7 +153,7 @@ with col_c:
     st.markdown(f"EU: {eu_ok}")
     st.markdown(f"China: {china_ok}")
 
-st.plotly_chart(cumulative_savings_chart(df), use_container_width=True)
+st.plotly_chart(cumulative_savings_chart(df_chart), use_container_width=True)
 
 
 # ═══════════════════════════════════════════════════════════════════════════

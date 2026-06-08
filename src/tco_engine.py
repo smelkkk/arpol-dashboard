@@ -152,7 +152,7 @@ def compute_annual_outsource_cost(a: dict, year: int) -> dict:
 # SCENARIO CASHFLOW TABLES
 # ══════════════════════════════════════════════════════════════════════════════
 
-def compute_scenario_cashflows(a: dict) -> pd.DataFrame:
+def compute_scenario_cashflows(a: dict, year_range=None) -> pd.DataFrame:
     """
     Compute annual and cumulative cash flows for all three scenarios.
     Returns a DataFrame with columns:
@@ -160,9 +160,12 @@ def compute_scenario_cashflows(a: dict) -> pd.DataFrame:
         (negative = cash outflow)
 
     Also computes cumulative columns and savings-vs-outsource columns.
+    Pass year_range=range(10) to extend the horizon to Year 9 for charts.
     """
+    if year_range is None:
+        year_range = YEAR_RANGE
     rows = []
-    for yr in YEAR_RANGE:
+    for yr in year_range:
         row = {"year": yr}
 
         # ── Outsource ──────────────────────────────────────────────────
