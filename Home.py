@@ -134,8 +134,8 @@ for key, color in msg_color_map.items():
 with st.expander(
     "📊 " + ("Year-by-Year Cash Flow Detail" if get_lang() == "en" else "Detalle Flujo de Caja por Año")
 ):
-    display_df = df[["year", "outsource", "eu_insource", "china_insource",
-                      "eu_savings_cumul", "china_savings_cumul"]].copy()
+    display_df = df_chart[["year", "outsource", "eu_insource", "china_insource",
+                            "eu_savings_cumul", "china_savings_cumul"]].copy()
     display_df.columns = [
         t("year"),
         t("scenario_outsource") + " (€)",
